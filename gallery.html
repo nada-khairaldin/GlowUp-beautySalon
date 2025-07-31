@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery</title>
+    <link rel="stylesheet" href="./css/style.css" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script
+      src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"
+      defer
+    ></script>
+    <script src="/js/gallery.js" defer></script>
+  </head>
+  <body>
+ <header id="header" class="header">
+      <div><img src="/assets/images/glowUpLogo.png" alt="" class="logo" class="hide-log"></div>
+      <nav >
+        <ul class="nav-link-list" id="nav-link-list">
+          <li ><a href="/index.html">Home</a></li>
+          <li ><a href="/services.html">Services</a></li>
+          <li ><a href="/stylists.html">Stylists</a></li>
+          <li ><a href="/gallery.html">Gallery</a></li>
+          <li ><a href="/booking.html">Booking</a></li>
+          <li ><a href="/contact.html">Contact</a></li>
+        </ul>
+       <div class="hamburger-icon"> <i class="fa-solid fa-list" id="hamburger-icon"></i></div>
+      </nav>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+      <span class="close-sidebar" id="close-btn">&times;</span>
+       <ul class="sidebar-links-list">
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/stylists.html">Stylists</a></li>
+          <li><a href="/gallery.html">Gallery</a></li>
+          <li><a href="/booking.html">Booking</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+    </div>
+    </header>
+
+    <main class="cover gallery-main">
+       <div class="overlay">
+        <h1 class="centered-text-overlay cover-heading">Our Gallery</h1>
+      </div>
+    </main>
+
+    <div class="category-filter">
+      <p>Choose a category</p>
+      <div class="filter-svg"></div>
+      <select name="category-filter" id="category-filter">
+        <option value="all">All</option>
+        <option value="hair">Hair</option>
+        <option value="makeup">Makeup</option>
+        <option value="facial">Facial</option>
+        <option value="nails">Nails</option>
+        <option value="eyebrows and eyelashes">eyebrows & eyelashes</option>
+      </select>
+    </div>
+
+    <section class="gallery-grid">
+
+      
+      <div class="img-wrapper"  data-category="eyebrows and eyelashes"><img
+        src="/assets/images/gallery-eyebrow&eyelashes5.jpg"
+        alt=""
+        class="gallery-img"
+loading="lazy"      />
+    </div>
+    </div>
+
+
+      <div class="img-wrapper" data-category="facial"><img src="/assets/images/gallery-facil6.jpg" alt="" class="gallery-img" loading="lazy" />
+      </div>
+      
+
+      
+      <div class="img-wrapper" data-category="hair"><img
+        src="/assets/images/gallery-hairCut1.jpg"
+        alt=""
+        class="gallery-img"
+loading="lazy"      /></div>
+
+    
+      <div class="img-wrapper" data-category="makeup"><img
+        src="/assets/images/gallery-makeup4.jpg"
+        alt=""
+        class="gallery-img"
+loading="lazy"      /></div>
+
+      
+      <div class="img-wrapper"  data-category="hair"><img
+        src="/assets/images/gallery-hairStyle3.jpg"
+        alt=""
+        class="gallery-img"
+loading="lazy"      /></div>
+
+    
+      <div class="img-wrapper" data-category="makeup"><img
+        src="/assets/images/gallery-makeup6.jpg"
+        alt=""
+        class="gallery-img"
+loading="lazy"      /></div>
+
+  
+      <div class="img-wrapper" data-category="facial"><img src="/assets/images/gallery-facil3.jpg" alt="" class="gallery-img" loading="lazy" />
+      </div>
+      
+
+  
+      <div class="img-wrapper" data-category="nails"><img src="/assets/images/gallery-nail14.jpg" alt="" class="gallery-img" loading="lazy" /></div>
+
+  
+      <div class="img-wrapper" data-category="facial"><img src="/assets/images/gallery-facil4.jpg" alt="" class="gallery-img" loading="lazy" /></div>
+
+  
+      <div class="img-wrapper" data-category="nails"><img src="/assets/images/gallery-nail21.jpg" alt="" class="gallery-img"/loading="lazy"></div>
+
+        
+      <div class="img-wrapper"  data-category="eyebrows and eyelashes"><img src="/assets/images/gallery-eyebrow&eyelashes2.jpg"
+        alt=""
+        class="gallery-img"
+loading="lazy"      /></div>
+
+      
+       <div class="img-wrapper" data-category="hair"><img src="/assets/images/gallery-hairStyle7.jpg" alt="" class="gallery-img" loading="lazy" />
+       </div>
+
+      <div class="img-wrapper" data-category="eyebrows and eyelashes"><img
+        src="/assets/images/gallery-makeup9.jpg"
+        alt=""
+        class="gallery-img"
+loading="lazy"      /></div>
+
+      
+      <div class="img-wrapper"  data-category="hair"><img
+        src="/assets/images/gallery-hairStyle11.jpg"
+        alt=""
+        class="gallery-img"
+loading="lazy"      /></div>
+
+ 
+      <div class="img-wrapper" data-category="nails"><img
+        src="/assets/images/gallery-nail13.jpg"
+        alt=""
+        class="gallery-img"
+loading="lazy"      /></div>
+
+  
+      <div class="img-wrapper" data-category="facial"><img
+        src="/assets/images/gallery-facil7.jpg"
+        alt=""
+        class="gallery-img" loading="lazy"
+      /></div>
+    
+  
+      <div class="img-wrapper" data-category="nails"><img src="/assets/images/gallery-nail17.jpg" alt="" class="gallery-img" loading="lazy" />
+      </div>
+
+     
+      <div class="img-wrapper" data-category="makeup"><img src="/assets/images/gallery-makeup11.jpg" alt="" class="gallery-img" loading="lazy"/></div>
+
+    
+      <div class="img-wrapper" data-category="nails"><img src="/assets/images/gallery-nail37.jpg" alt="" class="gallery-img" loading="lazy" /></div>
+
+         <div class="img-wrapper" data-category="hair"><img src="/assets/images/gallery-hairStyle18.jpg" alt="" class="gallery-img" loading="lazy" /></div>
+
+         
+      
+        <div class="img-wrapper" data-category="facial"><img src="/assets/images/gallery-facil11.jpg" alt="" class="gallery-img" loading="lazy" />
+        </div>
+
+      
+        <div class="img-wrapper" data-category="hair"><img src="/assets/images/gallery-hairStyle22.jpg" alt="" class="gallery-img" loading="lazy" />
+        </div>
+
+      <div class="img-wrapper" data-category="eyebrows and eyelashes"><img src="/assets/images/gallery-eyebrow&eyelashes6.jpg" alt="" class="gallery-img" loading="lazy"  /></div>
+
+   
+        <div class="img-wrapper" data-category="nails"><img src="/assets/images/gallery-nail20.jpg" alt="" class="gallery-img" loading="lazy"/></div>
+
+   <div class="img-wrapper" data-category="nails"><img src="/assets/images/gallery-nail24.jpg" alt="" class="gallery-img" loading="lazy" /></div>
+
+      
+       <div class="img-wrapper" data-category="makeup"><img src="/assets/images/gallery-makeup13.jpg" alt="" class="gallery-img" loading="lazy" />
+      </div>
+
+     <div class="img-wrapper" data-category="hair"><img src="/assets/images/gallery-hairStyle17.jpg" alt="" class="gallery-img" loading="lazy" /></div></a>
+
+    <div class="img-wrapper" data-category="nails"><img src="/assets/images/gallery-nail30.jpg" alt="" class="gallery-img" loading="lazy" /></div>
+   
+    </section>
+
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div  class="footer-logo">
+          <h2 class="logo">
+            <a href="index.html"
+              ><img src="/assets/images/glowUpLogo.png" alt="" class="logo"
+            /></a>
+          </h2>
+        </div>
+
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Beauty Booking. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

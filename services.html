@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GlowUp Services</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"
+      defer
+    ></script>
+    <script src="js/main.js" defer></script>
+    <script src="/js/services.js" defer></script>
+
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header id="header" class="header">
+      <div>
+        <img
+          src="/assets/images/glowUpLogo.png"
+          alt=""
+          class="logo"
+          class="hide-log"
+        />
+      </div>
+      <nav>
+        <ul class="nav-link-list" id="nav-link-list">
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/stylists.html">Stylists</a></li>
+          <li><a href="/gallery.html">Gallery</a></li>
+          <li><a href="/booking.html">Booking</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger-icon">
+          <i class="fa-solid fa-list" id="hamburger-icon"></i>
+        </div>
+      </nav>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+      <span class="close-sidebar" id="close-btn">&times;</span>
+      <ul class="sidebar-links-list">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/stylists.html">Stylists</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+        <li><a href="/booking.html">Booking</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <main class="cover services-main">
+      <div class="overlay">
+        <h1 class="cover-heading centered-text-overlay">Our Services</h1>
+      </div>
+    </main>
+
+    <section class="services-hero">
+      <div class="category-filter">
+        <p>Choose a category</p>
+        <div class="filter-svg"></div>
+        <select name="category-filter" id="category-filter">
+          <option value="all">All</option>
+          <option value="hair">Hair</option>
+          <option value="makeup">Makeup</option>
+          <option value="facial">Facial</option>
+          <option value="nails">Nails</option>
+          <option value="eyebrows and eyelashes">eyebrows & eyelashes</option>
+        </select>
+      </div>
+
+      <section class="services-grid">
+        <div
+          class="service-container large"
+          data-category="hair"
+          data-aos="fade-up"
+          data-aos-delay="0"
+          data-aos-duration="1000"
+        >
+          <img
+            src="assets/images/services-hairCut1.jpg"
+            alt="Haircut Service"
+            class="service-image"
+          />
+          <div class="service-content">
+            <h3 class="service-title">Haircut</h3>
+            <p class="service-description">
+              Our haircut service goes far beyond a simple trim — it’s a
+              personalized styling session where our expert stylists analyze
+              your hair type, face shape, and lifestyle to craft a look that
+              fits you perfectly.
+            </p>
+            <p class="list-title">What’s included:</p>
+            <ul class="custom-list">
+              <li class="cut-hair-list">
+                One-on-one consultation with a professional stylist
+              </li>
+              <li class="cut-hair-list">
+                Custom haircut based on your features & preferences
+              </li>
+            </ul>
+
+            <div class="service-meta">
+              <span class="service-duration">⏱ Duration: 30 mins</span>
+              <span class="service-price">💵 $20</span>
+            </div>
+            <div class="service-buttons">
+              <button class="view-gallery-btn">View in Gallery</button>
+              <button class="book-now-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="service-container tall"
+          data-category="hair"
+          data-aos="fade-up-left"
+          data-aos-delay="100"
+          data-aos-duration="800"
+        >
+          <img
+            src="/assets/images/services-hairColoring.jpg"
+            alt="Hair Color Service"
+            class="service-image"
+          />
+          <div class="service-content">
+            <h3 class="service-title">Hair Color</h3>
+            <p class="service-description">
+              Whether you're embracing a bold new identity or simply refreshing
+              your natural tones, our hair color service offers a luxurious and
+              customized experience.
+            </p>
+            <p class="list-title">What’s Included in the Service:</p>
+            <ul class="custom-list colored-hair-service-list list-style-svg">
+              <li>
+                Personalized Color Consultation – We'll help you choose the
+                perfect shade that matches your skin tone, style, and
+                personality.
+              </li>
+              <li>
+                Premium Ammonia-Free Products – Gentle on your scalp and hair,
+                ensuring long-lasting color with a healthy shine.
+              </li>
+            </ul>
+            <p class="list-title">Color Options – Choose from:</p>
+            <ul class="custom-list colored-hair list-style-svg">
+              <li>Full Hair Color</li>
+              <li>Balayage</li>
+              <li>Ombré</li>
+              <li>Highlights & Lowlights</li>
+              <li>Root Touch-Ups</li>
+            </ul>
+
+            <div class="service-meta">
+              <span class="service-duration">⏱ Duration: 1.5 to 2.5 hours</span>
+              <span class="service-price">💵 $60</span>
+            </div>
+            <div class="service-buttons">
+              <button class="view-gallery-btn">View in Gallery</button>
+              <button class="book-now-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="service-container large"
+          data-category="hair"
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+        >
+          <img
+            src="/assets/images/services-hairStyling.jpg"
+            alt="Hair Styling Service"
+            class="service-image"
+          />
+          <div class="service-content">
+            <h3 class="service-title">Hairstyling</h3>
+            <p class="service-description">
+              Our expert stylists offer a wide range of styles — from soft
+              romantic waves to sleek, polished updos — tailored to your hair
+              type, face shape, and personal preferences.
+            </p>
+            <p class="list-title">What we offer:</p>
+            <ul class="custom-list hair-style-service-list list-style-svg">
+              <li>Professional blow-dry and styling with premium products</li>
+              <li>Elegant updos for weddings, parties, and formal events</li>
+              <li>Soft curls, beach waves, or straightened sleek looks</li>
+            </ul>
+
+            <div class="service-meta">
+              <span class="service-duration">⏱ Duration: 45 mins</span>
+              <span class="service-price">💵 $35</span>
+            </div>
+            <div class="service-buttons">
+              <button class="view-gallery-btn">View in Gallery</button>
+              <button class="book-now-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="service-container wide"
+          data-category="makeup"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
+          <img
+            src="/assets/images/services-bridalMakeup.png"
+            alt="Bridal Makeup Service"
+            class="service-image"
+          />
+          <div class="service-content">
+            <h3 class="service-title">Bridal Makeup</h3>
+            <p class="service-description">
+              Our Bridal Makeup service is crafted to make every bride feel like
+              the most beautiful version of herself — timeless, radiant, and
+              unforgettable
+            </p>
+            <p class="list-title">What’s Included in the Service:</p>
+            <ul class="custom-list list-style-svg bridal-svg">
+              <li>
+                Personalized Consultation – We begin with a detailed
+                consultation to understand your dress, theme, skin tone, and
+                style preferences.
+              </li>
+
+              <li>
+                Skin Prep Ritual – Hydrating skincare routine with cleansers,
+                moisturizers, primers, and under-eye treatments to ensure
+                flawless application and long-lasting results.
+              </li>
+            </ul>
+            <p class="list-title">Custom Bridal Makeup Application:</p>
+            <ul class="custom-list list-style-svg bridal-svg">
+              <li>Long-wear Foundation perfectly matched to your skin tone</li>
+              <li>High-definition Contouring & Highlighting</li>
+              <li>Soft or Glam Eye Looks with premium lashes</li>
+              <li>Waterproof & Smudge-proof Eye Makeup</li>
+              <li>Setting spray for 12+ hours of wear</li>
+            </ul>
+            <div class="service-meta">
+              <span class="service-duration">⏱ Duration: 120 mins</span>
+              <span class="service-price">💵 $120</span>
+            </div>
+            <div class="service-buttons">
+              <button class="view-gallery-btn">View in Gallery</button>
+              <button class="book-now-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="service-container"
+          data-category="makeup"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="0"
+        >
+          <img
+            src="/assets/images/services-softMakeup.jpg"
+            alt="Soft Makeup Service"
+            class="service-image"
+          />
+          <div class="service-content">
+            <h3 class="service-title">Soft Makeup</h3>
+            <p class="service-description">
+              Natural and elegant makeup for a glowing look.
+            </p>
+            <div class="service-meta">
+              <span class="service-duration">⏱ Duration: 40 mins</span>
+              <span class="service-price">💵 $40</span>
+            </div>
+            <div class="service-buttons">
+              <button class="view-gallery-btn">View in Gallery</button>
+              <button class="book-now-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="service-container"
+          data-category="nails"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="100"
+        >
+          <img
+            src="/assets/images/services-Manicure.jpg"
+            alt="Manicure Service"
+            class="service-image"
+          />
+          <div class="service-content">
+            <h3 class="service-title">Manicure</h3>
+            <p class="service-description">
+              Neat and classy nail care for beautiful hands.
+            </p>
+            <div class="service-meta">
+              <span class="service-duration">⏱ Duration: 30 mins</span>
+              <span class="service-price">💵 $15</span>
+            </div>
+            <div class="service-buttons">
+              <button class="view-gallery-btn">View in Gallery</button>
+              <button class="book-now-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="service-container"
+          data-category="nails"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="200"
+        >
+          <img
+            src="/assets/images/services-Pedicure.jpg"
+            alt="Pedicure Service"
+            class="service-image"
+          />
+          <div class="service-content">
+            <h3 class="service-title">Pedicure</h3>
+            <p class="service-description">
+              Foot care and beauty treatments for relaxation and hygiene.
+            </p>
+            <div class="service-meta">
+              <span class="service-duration">⏱ Duration: 40 mins</span>
+              <span class="service-price">💵 $18</span>
+            </div>
+            <div class="service-buttons">
+              <button class="view-gallery-btn">View in Gallery</button>
+              <button class="book-now-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="service-container tall"
+          data-category="facial"
+          data-aos="fade-up-right"
+          data-aos-duration="1000"
+        >
+          <img
+            src="/assets/images/FacialsService.jpg"
+            alt="Facial Service"
+            class="service-image"
+          />
+          <div class="service-content">
+            <h3 class="service-title">Facial</h3>
+            <p class="service-description">
+              Rejuvenate your skin and refresh your soul with our luxurious
+              facial treatments — a perfect escape from daily stress and the key
+              to radiant, healthy skin.
+            </p>
+            <p class="list-title">What’s Included in the Facial Treatment:</p>
+            <ul class="custom-list list-style-svg facial-svg">
+              <li>
+                Skin Analysis & Consultation– We begin by examining your skin
+                type and concerns (acne, dryness, dullness, sensitivity) to
+                customize your treatment.
+              </li>
+              <li>
+                Deep Cleansing Ritual – Removes dirt, excess oil, and impurities
+                using gentle, pH-balanced cleansers.
+              </li>
+              <li>
+                Steam & Exfoliation – Opens pores and buffs away dead skin cells
+                for a smoother, brighter complexion.
+              </li>
+              <li>
+                Blackhead/Whitehead Extraction – Careful and hygienic removal to
+                leave your skin feeling fresh and clear.
+              </li>
+              <li>
+                Facial Massage – Relaxing massage with essential oils to improve
+                blood circulation and relieve tension.
+              </li>
+              <li>Serums & Moisturizers – Infused with active ingredients.</li>
+            </ul>
+            <div class="service-meta">
+              <span class="service-duration">⏱ Duration: 50 mins</span>
+              <span class="service-price">💵 $30</span>
+            </div>
+            <div class="service-buttons">
+              <button class="view-gallery-btn">View in Gallery</button>
+              <button class="book-now-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="service-container special"
+          data-category="facial"
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+        >
+          <img
+            src="/assets/images/pexels-arina-krasnikova-6663374.jpg"
+            alt="Glow Masks Service"
+            class="service-image"
+          />
+          <div class="service-content">
+            <h3 class="service-title">Glow Masks</h3>
+            <p class="service-description">
+              Glow Masks are revitalizing facial treatments designed to boost
+              your skin’s radiance and natural glow. Infused with nourishing
+              ingredients like Vitamin C, collagen, or gold.
+            </p>
+            <div class="service-meta">
+              <span class="service-duration">⏱ Duration: 25 mins</span>
+              <span class="service-price">💵 $20</span>
+            </div>
+            <div class="service-buttons">
+              <button class="view-gallery-btn">View in Gallery</button>
+              <button class="book-now-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="service-container"
+          data-category="eyebrows and eyelashes"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="100"
+        >
+          <img
+            src="/assets/images/services-eyebrow.jpg"
+            alt="Eyebrow Shaping Service"
+            class="service-image"
+          />
+          <div class="service-content">
+            <h3 class="service-title">Eyebrow Shaping</h3>
+            <p class="service-description">
+              Precise eyebrow shaping to enhance your features.
+            </p>
+            <div class="service-meta">
+              <span class="service-duration">⏱ Duration: 15 mins</span>
+              <span class="service-price">💵 $10</span>
+            </div>
+            <div class="service-buttons">
+              <button class="view-gallery-btn">View in Gallery</button>
+              <button class="book-now-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="service-container offer-card"
+          data-category="special-offer"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="200"
+        >
+          <img
+            src="/assets/images/Gemini_Generated_Image_7ge3707ge3707ge3.png"
+            alt="Special Offer"
+            class="service-image"
+          />
+          <div class="service-content">
+            <h3 class="service-title" style="color: #e91e63">
+              🔥 Summer Glow Offer 🔥
+            </h3>
+            <p class="service-description offer-description">
+              Get 30% off on Hair Coloring + Free Hairstyling!
+              <br />
+              Valid until the end of this month.
+            </p>
+            <div class="service-meta offer-meta">
+              <span class="service-duration">⏳ Limited Time Offer</span>
+              <span class="service-price offer-price">💵 Save Big!</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <h2 class="logo">
+            <a href="index.html"
+              ><img src="/assets/images/glowUpLogo.png" alt="" class="logo"
+            /></a>
+          </h2>
+        </div>
+
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Beauty Booking. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

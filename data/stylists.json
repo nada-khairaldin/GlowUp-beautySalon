@@ -1,0 +1,56 @@
+[
+  {
+    "id": "sophia",
+    "name": "Sophia Blake",
+    "specialty": "Senior Hair Stylist",
+    "bio": "Sophia Blake has over 12 years of experience specializing in modern haircuts and color techniques. She loves transforming looks to bring out each client's unique style.",
+    "services": ["Haircut", "Balayage", "Hair Coloring"],
+    "availableTimes": ["10:00 AM", "11:30 AM", "01:00 PM", "03:30 PM"],
+    "image": "/assets/images/Sophia-Blake.png"
+  },
+  {
+    "id": "isabella",
+    "name": "Isabella Moore",
+    "specialty": "Makeup Artist",
+    "bio": "Isabella Moore is a professional makeup artist with 8 years of experience. She is passionate about bridal makeup and high-fashion editorial looks.",
+    "services": ["Bridal Makeup", "Evening Makeup", "Photoshoot Makeup"],
+    "availableTimes": ["09:00 AM", "10:30 AM", "12:00 PM", "02:00 PM"],
+    "image": "/assets/images/Isabella-Moore.png"
+  },
+  {
+    "id": "chloe",
+    "name": "Chloe Bennett",
+    "specialty": "Nail Technician",
+    "bio": "Chloe has been beautifying nails for 10 years with a focus on creativity and hygiene. She specializes in nail art and gel manicures.",
+    "services": ["Manicure", "Pedicure", "Nail Art"],
+    "availableTimes": ["11:00 AM", "12:30 PM", "02:30 PM", "04:00 PM"],
+    "image": "/assets/images/Chloe-Bennett.png"
+  },
+  {
+    "id": "mia",
+    "name": "Mia Carter",
+    "specialty": "Barber",
+    "bio": "Mia is an expert barber known for precision cuts and classic styles. He enjoys working with clients to achieve the perfect look.",
+    "services": ["Haircut", "Beard Grooming", "Shaving"],
+    "availableTimes": ["08:30 AM", "10:00 AM", "01:30 PM", "03:00 PM"],
+    "image": "/assets/images/Mia-Carter.png"
+  },
+  {
+    "id": "olivia",
+    "name": "Olivia Brooks",
+    "specialty": "Skincare Specialist",
+    "bio": "Olivia has 7 years of experience in skincare treatments, helping clients achieve healthy and radiant skin with personalized routines.",
+    "services": ["Facials", "Acne Treatments", "Skin Analysis"],
+    "availableTimes": ["09:30 AM", "11:00 AM", "01:00 PM", "02:30 PM"],
+    "image": "/assets/images/Olivia-Brook.png"
+  },
+  {
+    "id": "ava",
+    "name": "Ava Reynolds",
+    "specialty": "Massage Therapist",
+    "bio": "Ava is a licensed massage therapist with expertise in relaxation and therapeutic massages aimed at stress relief and muscle recovery.",
+    "services": ["Swedish Massage", "Deep Tissue Massage", "Aromatherapy"],
+    "availableTimes": ["10:00 AM", "12:00 PM", "02:00 PM", "04:00 PM"],
+    "image": "/assets/images/Ava-Reynolds.png"
+  }
+]
