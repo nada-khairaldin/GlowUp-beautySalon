@@ -19,11 +19,11 @@ categoryFilter.addEventListener("change", function () {
 });
 
 bookBtns.forEach((btn) => {
-  getServiceCategory(btn, "/booking.html");
+  getServiceCategory(btn, "../booking.html");
 });
 
 galleryBtns.forEach((btn) => {
-  getServiceCategory(btn, "/gallery.html");
+  getServiceCategory(btn, "../gallery.html");
 });
 
 function getServiceCategory(btn, page) {

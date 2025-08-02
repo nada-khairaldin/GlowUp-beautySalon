@@ -152,7 +152,7 @@ bookingForm.addEventListener("submit", (e) => {
 });
 
 confirmYes.addEventListener("click", () => {
-  document.location.href = "thankyou.html";
+  document.location.href = "../thankyou.html";
   errorMsg.textContent = "";
   confirmModal.style.display = "none";
   timeSlotsContainer.innerHTML =

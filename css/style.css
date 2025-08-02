@@ -660,17 +660,20 @@ textarea {
 
 .services-grid {
   background-color: var(--bg-section);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(6, auto);
+  grid-auto-rows: 30rem;
   gap: 20px;
   padding: 20px;
+  justify-content: center;
 }
 
 .service-container {
   border: 2px solid var(--primary-color);
   display: flex;
   flex-direction: column;
-  min-height: 620px;
   background-color: var(--bg-page);
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
@@ -678,12 +681,43 @@ textarea {
   line-height: 1.6;
 }
 
+.service-container.large,
+.service-container.wide {
+  flex-direction: column;
+  height: 100%;
+}
+
+.service-container.large {
+  grid-column: span 2;
+}
+.service-container.wide {
+  grid-column: span 3;
+}
+.service-container.tall {
+  grid-row: span 2;
+  height: 100%;
+}
+
+.service-container.special {
+  grid-column: 2/4;
+}
+
 .service-image {
-  width: 100%;
-  height: 40%;
+  max-width: 100%;
+  height: 300px;
   object-fit: cover;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+}
+
+.service-container.large .service-image,
+.service-container.wide .service-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-top-right-radius: 0;
 }
 
 .service-content {
@@ -741,27 +775,27 @@ textarea {
 
 .colored-hair-service-list li::before {
   content: "";
-  background-image: url("/assets/icons/hair-coloring.svg");
+  background-image: url("../assets/icons/hair-coloring.svg");
 }
 
 .colored-hair li::before {
   content: "";
-  background-image: url("/assets/icons/hair-color.svg");
+  background-image: url("../assets/icons/hair-color.svg");
 }
 
 .hair-style-service-list li::before {
   content: "";
-  background-image: url("/assets/icons/hair-style-hair.svg");
+  background-image: url("../assets/icons/hair-style-hair.svg");
 }
 
 .bridal-svg li::before {
   content: "";
-  background-image: url(/assets/icons/lipstick-makeup.svg);
+  background-image: url("../assets/icons/lipstick-makeup.svg");
 }
 
 .facial-svg li::before {
   content: "";
-  background-image: url(/assets/icons/cream-facial.svg);
+  background-image: url("../assets/icons/cream-facial.svg");
 }
 .service-buttons {
   margin-top: auto;
@@ -847,7 +881,7 @@ textarea {
   height: 25px;
   display: inline-block;
   background-size: contain;
-  background-image: url(/assets/icons/filter-edit.svg);
+  background-image: url("../assets/icons/filter-edit.svg");
 }
 
 .hidden {
@@ -857,7 +891,7 @@ textarea {
 }
 
 .stylists-cover {
-  background-image: url(/assets/images/stylist-cover.png);
+  background-image: url("../assets/images/stylist-cover.png");
 }
 .team-section {
   padding: 4rem 2rem;
@@ -1040,7 +1074,7 @@ textarea {
 }
 
 .gallery-main {
-  background-image: url(/assets/images/Gemini_Generated_Image_ngbjmgngbjmgngbj.png);
+  background-image: url("../assets/images/Gemini_Generated_Image_ngbjmgngbjmgngbj.png");
 }
 
 .our-gallery-heading {
@@ -1153,7 +1187,7 @@ textarea {
 }
 
 .booking-main {
-  background-image: url(/assets/images/booking-cover.png);
+  background-image: url("../assets/images/booking-cover.png");
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1209,23 +1243,23 @@ textarea {
   height: 50px;
   display: inline-block;
   background-size: cover;
-  background-image: url(/assets/icons/service.svg);
+  background-image: url("../assets/icons/service.svg");
 }
 
 .service-step {
-  background-image: url(/assets/icons/service.svg);
+  background-image: url("../assets/icons/service.svg");
 }
 
 .stylist-step {
-  background-image: url(/assets/icons/service-stylist.svg);
+  background-image: url("../assets/icons/service-stylist.svg");
 }
 
 .appointment-step {
-  background-image: url(/assets/icons/event-date.svg);
+  background-image: url("../assets/icons/event-date.svg");
 }
 
 .confirm-step {
-  background-image: url(/assets/icons/confirm.svg);
+  background-image: url("../assets/icons/confirm.svg");
 }
 
 .step-title {
@@ -1340,7 +1374,7 @@ form label {
 .info-container {
   flex: 1;
   position: relative;
-  background-image: url(/assets/images/glowUpSalon.png);
+  background-image: url("../assets/images/glowUpSalon.png");
   background-size: cover;
   background-position: center;
   color: white;
@@ -1365,7 +1399,7 @@ form label {
 }
 
 .salon-contact-info {
-  background-image: url(/assets/images/glowUp_contact.png);
+  background-image: url("../assets/images/glowUp_contact.png");
   height: 50vh;
   width: 100%;
   position: relative;
@@ -1666,9 +1700,9 @@ form label {
     padding: 2rem;
     gap: 2.5rem;
   }
-  /* .gallery-grid {
+  .gallery-grid {
     grid-template-columns: repeat(3, 1fr);
-  } */
+  }
   .booking-main-heading {
     font-size: 2rem;
     padding: 5rem 8rem;
@@ -1733,19 +1767,19 @@ form label {
   .services-grid {
     display: grid;
   }
-  /* .service-container.large .service-image,
+  .service-container.large .service-image,
   .service-container.wide .service-image {
     width: 50%;
     height: 100%;
-  } */
+  }
 
-  /* .service-container.large,
+  .service-container.large,
   .service-container.wide {
     flex-direction: row;
-  } */
-  /* .gallery-grid {
+  }
+  .gallery-grid {
     grid-template-columns: repeat(4, 1fr);
-  } */
+  }
 }
 
 .steps-container {
@@ -1757,15 +1791,11 @@ form label {
 }
 
 .step-arrow {
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
-
   width: 50px;
   height: 50px;
   display: inline-block;
   background-size: cover;
-  background-image: url(/assets/icons/arrow-right-svgrepo-com.svg);
+  background-image: url("../assets/icons/arrow-right-svgrepo-com.svg");
 }
 
 .step-arrow-container {

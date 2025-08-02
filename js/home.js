@@ -62,7 +62,7 @@ function validateEmail(email) {
 
 confirmYes.addEventListener("click", () => {
   confirmModal.style.display = "none";
-  document.location.href = "thankyou.html";
+  document.location.href = "../thankyou.html";
   contactForm.reset();
 });
 
@@ -91,5 +91,5 @@ function activateSectionOnScroll() {
 window.addEventListener("scroll", activateSectionOnScroll);
 
 document.getElementById("plus-icon").addEventListener("click", function () {
-  window.location.href = "gallery.html";
+  window.location.href = "../gallery.html";
 });

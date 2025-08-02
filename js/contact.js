@@ -35,7 +35,7 @@ function validateEmail(email) {
 
 confirmYes.addEventListener("click", () => {
   confirmModal.style.display = "none";
-  document.location.href = "thankyou.html";
+  document.location.href = "../thankyou.html";
   contactForm.reset();
 });
 
