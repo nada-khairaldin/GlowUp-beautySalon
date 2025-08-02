@@ -655,26 +655,22 @@ textarea {
 .cover-heading {
   color: var(--text-light);
   font-size: 3rem;
-  border: 1px solid white;
   padding: 2.5rem 4rem;
 }
 
 .services-grid {
   background-color: var(--bg-section);
-  display: flex;
-  flex-direction: column;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(6, auto);
-  grid-auto-rows: 30rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   padding: 20px;
-  justify-content: center;
 }
 
 .service-container {
   border: 2px solid var(--primary-color);
   display: flex;
   flex-direction: column;
+  min-height: 620px;
   background-color: var(--bg-page);
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
@@ -682,43 +678,12 @@ textarea {
   line-height: 1.6;
 }
 
-.service-container.large,
-.service-container.wide {
-  flex-direction: column;
-  height: 100%;
-}
-
-.service-container.large {
-  grid-column: span 2;
-}
-.service-container.wide {
-  grid-column: span 3;
-}
-.service-container.tall {
-  grid-row: span 2;
-  height: 100%;
-}
-
-.service-container.special {
-  grid-column: 2/4;
-}
-
 .service-image {
-  max-width: 100%;
-  height: 300px;
+  width: 100%;
+  height: 40%;
   object-fit: cover;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-}
-
-.service-container.large .service-image,
-.service-container.wide .service-image {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  border-top-right-radius: 0;
 }
 
 .service-content {
@@ -1198,7 +1163,6 @@ textarea {
 .booking-main-heading {
   color: var(--text-light);
   font-size: 1.5rem;
-  border: 1px solid white;
   padding: 2.5rem 4rem;
 }
 
@@ -1230,10 +1194,12 @@ textarea {
 }
 
 .step-card {
-  border-radius: 1rem;
+  /* border-radius: 50%; */
   padding: 2rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
   transition: transform 0.3s ease;
+  width: 250px;
+  /* height: 250px; */
 }
 
 .step-card:hover {
@@ -1702,9 +1668,9 @@ form label {
     padding: 2rem;
     gap: 2.5rem;
   }
-  .gallery-grid {
+  /* .gallery-grid {
     grid-template-columns: repeat(3, 1fr);
-  }
+  } */
   .booking-main-heading {
     font-size: 2rem;
     padding: 5rem 8rem;
@@ -1769,17 +1735,43 @@ form label {
   .services-grid {
     display: grid;
   }
-  .service-container.large .service-image,
+  /* .service-container.large .service-image,
   .service-container.wide .service-image {
     width: 50%;
     height: 100%;
-  }
+  } */
 
-  .service-container.large,
+  /* .service-container.large,
   .service-container.wide {
     flex-direction: row;
-  }
-  .gallery-grid {
+  } */
+  /* .gallery-grid {
     grid-template-columns: repeat(4, 1fr);
-  }
+  } */
+}
+
+.steps-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.step-arrow {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  background-size: cover;
+  background-image: url(/assets/icons/arrow-right-svgrepo-com.svg);
+}
+
+.step-arrow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

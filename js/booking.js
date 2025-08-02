@@ -2,6 +2,7 @@ let stylistData = [];
 
 const stylistSelect = document.getElementById("stylist");
 const hiddenInput = document.getElementById("selected-time");
+const bookBtn = document.getElementById("Book-btn");
 const confirmModal = document.getElementById("confirm-modal");
 const confirmYes = document.getElementById("confirm-yes");
 const confirmNo = document.getElementById("confirm-no");
@@ -27,15 +28,14 @@ async function loadStylists() {
       stylistSelect.classList.add("local-saved-active");
       handleSelectingChange();
     }
-
-    const savedService = localStorage.getItem("service category");
-    if (savedService) {
-      selectedService.value = savedService;
-      selectedService.classList.add("local-saved-active");
-    }
   } catch (error) {
     console.log("Error in loading Stylists data : ", error);
   }
+}
+const savedService = localStorage.getItem("service category");
+if (savedService) {
+  selectedService.value = savedService;
+  selectedService.classList.add("local-saved-active");
 }
 
 function handleSelectingChange() {
@@ -84,7 +84,41 @@ bookingForm.addEventListener("submit", (e) => {
   const service = document.getElementById("service").value;
   const time = hiddenInput.value;
 
-  if (!name || !phone || !stylist || !date || !time) {
+  // if (!name) {
+  //   errorMsg.textContent = "Please enter your name";
+  // }
+
+  // if (!stylist) {
+  //   errorMsg.textContent = "Please select a stylist";
+  // }
+
+  // if (!phone) {
+  //   errorMsg.textContent = "Please select a stylist";
+  // }
+
+  const phoneReg = /^[0-9]+$/;
+  if (!phoneReg.test(phone)) {
+    errorMsg.textContent = "Phone should includes numbers only";
+    return;
+  }
+
+  // if (!service) {
+  //   errorMsg.textContent = "Please select a service";
+  // }
+
+  const selectedData = new Date(date);
+  const today = new Date();
+  selectedData.setHours(0, 0, 0, 0);
+  today.setHours(0, 0, 0, 0);
+  if (selectedData <= today) {
+    errorMsg.textContent = "Please select a date after today date";
+    return;
+  }
+
+  // if (!stylist) {
+  //   errorMsg.textContent = "Please select a stylist";
+  // }
+  if (!name || !phone || !stylist || !date || !time || !service) {
     errorMsg.textContent = "Please fill out all required fields.";
     return;
   }
@@ -112,26 +146,27 @@ bookingForm.addEventListener("submit", (e) => {
   localStorage.setItem("bookings", JSON.stringify(oldBookings));
 
   errorMsg.textContent = "";
-  confirmModal.style.display = "block";
+  bookBtn.addEventListener("click", () => {
+    confirmModal.style.display = "block";
+  });
 });
 
 confirmYes.addEventListener("click", () => {
   document.location.href = "thankyou.html";
-  resetForm();
-});
-
-confirmNo.addEventListener("click", resetForm);
-
-function resetForm() {
   errorMsg.textContent = "";
   confirmModal.style.display = "none";
-  bookingForm.reset();
   timeSlotsContainer.innerHTML =
     "<p class='time-placeholder'>Please select a stylist to view available time slots</p>";
+  bookingForm.reset();
   localStorage.removeItem("stylist id");
   stylistSelect.classList.remove("local-saved-active");
   selectedService.classList.remove("local-saved-active");
-}
+});
+
+confirmNo.addEventListener("click", () => {
+  errorMsg.textContent = "";
+  confirmModal.style.display = "none";
+});
 
 loadStylists();
 stylistSelect.addEventListener("change", handleSelectingChange);
