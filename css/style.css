@@ -437,7 +437,7 @@ a {
   justify-content: center;
   gap: 1.5rem;
   height: 100%;
-  background: url(../assets/images/MakeupService.jpg);
+  background: url("../assets/images/MakeupService.jpg");
   box-shadow: initial;
 }
 
@@ -740,27 +740,27 @@ textarea {
 
 .colored-hair-service-list li::before {
   content: "";
-  background-image: url("/assets/icons/hair-coloring.svg");
+  background-image: url("../assets/icons/hair-coloring.svg");
 }
 
 .colored-hair li::before {
   content: "";
-  background-image: url("/assets/icons/hair-color.svg");
+  background-image: url("../assets/icons/hair-color.svg");
 }
 
 .hair-style-service-list li::before {
   content: "";
-  background-image: url("/assets/icons/hair-style-hair.svg");
+  background-image: url("../assets/icons/hair-style-hair.svg");
 }
 
 .bridal-svg li::before {
   content: "";
-  background-image: url(/assets/icons/lipstick-makeup.svg);
+  background-image: url("../assets/icons/lipstick-makeup.svg");
 }
 
 .facial-svg li::before {
   content: "";
-  background-image: url(/assets/icons/cream-facial.svg);
+  background-image: url("../assets/icons/cream-facial.svg");
 }
 .service-buttons {
   margin-top: auto;
@@ -846,7 +846,7 @@ textarea {
   height: 25px;
   display: inline-block;
   background-size: contain;
-  background-image: url(/assets/icons/filter-edit.svg);
+  background-image: url("../assets/icons/filter-edit.svg");
 }
 
 .hidden {

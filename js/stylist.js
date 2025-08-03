@@ -36,7 +36,7 @@ function openModal(member) {
   const bookBtn = document.getElementById("book-btn");
   bookBtn.addEventListener("click", () => {
     localStorage.setItem("stylist id", member.id);
-    window.location.href = "/booking.html";
+    window.location.href = "../booking.html";
   });
 }
 
