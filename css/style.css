@@ -101,19 +101,49 @@ a {
   color: var(--text-light);
 }
 
+.btn-show {
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  font-size: 1.7rem;
+  color: var(--text-light);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(173, 46, 61, 0.25);
+}
+
+.btn-show:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn-show .arrow {
+  display: inline-block;
+  margin-left: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.btn-show:hover .arrow {
+  transform: translateX(5px);
+}
+
 .main-box {
   background-image: url("../assets/images/salonCover.jpg");
-  background-size: cover;
-  background-attachment: fixed;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100%;
   overflow: hidden;
-  height: 100vh;
+  height: auto;
   display: flex;
   justify-content: flex-start;
 }
 
 .main-box h1 {
   color: var(--primary-color);
-  font-size: 4rem;
+  font-size: 2.5rem;
   text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.7);
 }
 
@@ -122,8 +152,8 @@ a {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 5rem;
-  padding: 6rem;
+  gap: 1rem;
+  padding: 1.5rem;
 }
 
 .salon-name {
@@ -135,6 +165,8 @@ a {
 .booking-btn {
   animation: pulse 2.5s infinite;
   background: linear-gradient(135deg, #ad2e3d, #b97a95);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
 }
 
 @keyframes pulse {
@@ -319,35 +351,6 @@ a {
   align-items: center;
 }
 
-.btn-show {
-  display: inline-block;
-  padding: 1.2rem 3rem;
-  font-size: 1.7rem;
-  color: var(--text-light);
-  background-color: var(--primary-color);
-  border: none;
-  border-radius: 30px;
-  text-decoration: none;
-  position: relative;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 20px rgba(173, 46, 61, 0.25);
-}
-
-.btn-show:hover {
-  background-color: var(--primary-dark);
-  transform: translateY(-2px);
-}
-
-.btn-show .arrow {
-  display: inline-block;
-  margin-left: 0.8rem;
-  transition: transform 0.3s ease;
-}
-
-.btn-show:hover .arrow {
-  transform: translateX(5px);
-}
-
 .stylist-intro-section {
   background-color: var(--bg-section);
 }
@@ -504,7 +507,8 @@ a {
 }
 
 .form-style {
-  width: 40rem;
+  width: 100%;
+  max-width: 40rem;
   padding: 3rem;
   background-color: #f1e7e754;
   border-radius: 4rem;
@@ -542,9 +546,8 @@ textarea {
   font-family: monospace;
 }
 .contact-btn {
-  margin-top: 4rem;
   background-color: var(--primary-color);
-  width: 12rem;
+  width: 120px;
   border: none;
   padding: 1.3rem;
   color: var(--bg-page);
@@ -584,11 +587,6 @@ textarea {
   border-radius: 1rem;
   text-align: center;
   box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
-}
-
-.error-message {
-  color: rgb(168, 53, 53);
-  padding: 2rem;
 }
 
 .modal-btn {
@@ -660,20 +658,18 @@ textarea {
 
 .services-grid {
   background-color: var(--bg-section);
-  display: flex;
-  flex-direction: column;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(6, auto);
-  grid-auto-rows: 30rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
   gap: 20px;
   padding: 20px;
-  justify-content: center;
 }
 
 .service-container {
+  height: fit-content;
   border: 2px solid var(--primary-color);
   display: flex;
   flex-direction: column;
+  min-height: 620px;
   background-color: var(--bg-page);
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
@@ -681,43 +677,12 @@ textarea {
   line-height: 1.6;
 }
 
-.service-container.large,
-.service-container.wide {
-  flex-direction: column;
-  height: 100%;
-}
-
-.service-container.large {
-  grid-column: span 2;
-}
-.service-container.wide {
-  grid-column: span 3;
-}
-.service-container.tall {
-  grid-row: span 2;
-  height: 100%;
-}
-
-.service-container.special {
-  grid-column: 2/4;
-}
-
 .service-image {
-  max-width: 100%;
-  height: 300px;
+  width: 100%;
+  height: 400px;
   object-fit: cover;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-}
-
-.service-container.large .service-image,
-.service-container.wide .service-image {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  border-top-right-radius: 0;
 }
 
 .service-content {
@@ -775,27 +740,27 @@ textarea {
 
 .colored-hair-service-list li::before {
   content: "";
-  background-image: url("../assets/icons/hair-coloring.svg");
+  background-image: url("/assets/icons/hair-coloring.svg");
 }
 
 .colored-hair li::before {
   content: "";
-  background-image: url("../assets/icons/hair-color.svg");
+  background-image: url("/assets/icons/hair-color.svg");
 }
 
 .hair-style-service-list li::before {
   content: "";
-  background-image: url("../assets/icons/hair-style-hair.svg");
+  background-image: url("/assets/icons/hair-style-hair.svg");
 }
 
 .bridal-svg li::before {
   content: "";
-  background-image: url("../assets/icons/lipstick-makeup.svg");
+  background-image: url(/assets/icons/lipstick-makeup.svg);
 }
 
 .facial-svg li::before {
   content: "";
-  background-image: url("../assets/icons/cream-facial.svg");
+  background-image: url(/assets/icons/cream-facial.svg);
 }
 .service-buttons {
   margin-top: auto;
@@ -881,7 +846,7 @@ textarea {
   height: 25px;
   display: inline-block;
   background-size: contain;
-  background-image: url("../assets/icons/filter-edit.svg");
+  background-image: url(/assets/icons/filter-edit.svg);
 }
 
 .hidden {
@@ -1220,14 +1185,17 @@ textarea {
 }
 
 .steps-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
   align-items: stretch;
 }
 
 .step-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 2rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
   transition: transform 0.3s ease;
@@ -1238,28 +1206,18 @@ textarea {
   transform: translateY(-10px);
 }
 
-.step-svg {
+.step-number {
   width: 50px;
   height: 50px;
-  display: inline-block;
-  background-size: cover;
-  background-image: url("../assets/icons/service.svg");
-}
-
-.service-step {
-  background-image: url("../assets/icons/service.svg");
-}
-
-.stylist-step {
-  background-image: url("../assets/icons/service-stylist.svg");
-}
-
-.appointment-step {
-  background-image: url("../assets/icons/event-date.svg");
-}
-
-.confirm-step {
-  background-image: url("../assets/icons/confirm.svg");
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  font-size: 2rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .step-title {
@@ -1500,6 +1458,15 @@ form label {
   font-weight: 700;
 }
 
+.error-input {
+  border: 1px solid red !important;
+}
+.error-message {
+  color: red;
+  font-size: 1.5rem;
+  margin-bottom: 7px;
+}
+
 .map-section {
   background: var(--bg-page);
   padding: 2rem 1rem;
@@ -1668,8 +1635,20 @@ form label {
   .hamburger-icon {
     display: none;
   }
+  .main-box {
+    background-size: cover;
+    height: 100vh;
+    background-attachment: fixed;
+  }
   .main-box h1 {
     font-size: 5rem;
+    gap: 5rem;
+    padding: 6rem;
+  }
+  .booking-btn {
+    padding: 1.2rem 3rem;
+    font-size: 1.7rem;
+    margin-left: 5rem;
   }
   .cover-heading {
     font-size: 4rem;
@@ -1700,6 +1679,7 @@ form label {
     padding: 2rem;
     gap: 2.5rem;
   }
+
   .gallery-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1732,7 +1712,7 @@ form label {
     width: 50%;
   }
   .contact-pg-form button {
-    width: 30%;
+    width: 50%;
   }
   .card {
     width: 40%;
@@ -1755,6 +1735,10 @@ form label {
     height: 18rem;
   }
 
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .stylist-img {
     width: 50rem;
   }
@@ -1764,42 +1748,7 @@ form label {
   .stylist-intro-text {
     transform: translate(-5rem, 2rem);
   }
-  .services-grid {
-    display: grid;
+  .contact-pg-form button {
+    width: 30%;
   }
-  .service-container.large .service-image,
-  .service-container.wide .service-image {
-    width: 50%;
-    height: 100%;
-  }
-
-  .service-container.large,
-  .service-container.wide {
-    flex-direction: row;
-  }
-  .gallery-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-.steps-container {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.step-arrow {
-  width: 50px;
-  height: 50px;
-  display: inline-block;
-  background-size: cover;
-  background-image: url("../assets/icons/arrow-right-svgrepo-com.svg");
-}
-
-.step-arrow-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

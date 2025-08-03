@@ -43,14 +43,16 @@ contactForm.addEventListener("submit", (e) => {
   const email = document.getElementById("email").value.trim();
   const message = document.getElementById("message").value.trim();
 
-  if (message === "How can we help" || !message) {
-    errorMsg.textContent = "Please enter a message.";
-    return;
-  }
   if (!validateEmail(email)) {
     errorMsg.textContent = "Please enter a valid email.";
     return;
   }
+
+  if (message === "How can we help" || !message) {
+    errorMsg.textContent = "Please enter a message.";
+    return;
+  }
+
   errorMsg.textContent = "";
   confirmModal.style.display = "block";
 });
@@ -67,7 +69,6 @@ confirmYes.addEventListener("click", () => {
 });
 
 confirmNo.addEventListener("click", () => {
-  contactForm.reset();
   confirmModal.style.display = "none";
 });
 

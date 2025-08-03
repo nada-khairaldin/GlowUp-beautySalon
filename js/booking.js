@@ -10,7 +10,7 @@ const errorMsg = document.getElementById("error-msg");
 const bookingForm = document.getElementById("booking-form");
 const selectedService = document.getElementById("service");
 const timeSlotsContainer = document.getElementById("time-slots");
-
+let bookingData;
 async function loadStylists() {
   try {
     const response = await fetch("/data/stylists.json");
@@ -55,6 +55,7 @@ function handleSelectingChange() {
     selectedStylist.availableTimes.forEach((time) => {
       const button = document.createElement("button");
       button.textContent = time;
+      button.type = "button";
       button.classList.add("time-slot-btn");
       button.addEventListener("click", () => selectTime(time, button));
       timeSlotsContainer.appendChild(button);
@@ -76,84 +77,105 @@ function selectTime(time, clickedButton) {
 bookingForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  const inputs = bookingForm.querySelectorAll("input, select");
+  inputs.forEach((input) => {
+    input.classList.remove("error-input");
+
+    const existingErrorDiv = document.getElementById("error-" + input.id);
+    if (existingErrorDiv) {
+      existingErrorDiv.remove();
+    }
+  });
   const name = document.getElementById("name").value.trim();
   const phone = document.getElementById("phone").value.trim();
-
   const stylist = document.getElementById("stylist").value;
   const date = document.getElementById("date").value;
   const service = document.getElementById("service").value;
   const time = hiddenInput.value;
 
-  // if (!name) {
-  //   errorMsg.textContent = "Please enter your name";
-  // }
+  let isValid = true;
 
-  // if (!stylist) {
-  //   errorMsg.textContent = "Please select a stylist";
-  // }
+  function showError(id, message) {
+    const input = document.getElementById(id);
+    if (input) input.classList.add("error-input");
 
-  // if (!phone) {
-  //   errorMsg.textContent = "Please select a stylist";
-  // }
-
-  const phoneReg = /^[0-9]+$/;
-  if (!phoneReg.test(phone)) {
-    errorMsg.textContent = "Phone should includes numbers only";
-    return;
+    let errorDiv = document.getElementById("error-" + id);
+    if (!errorDiv) {
+      errorDiv = document.createElement("div");
+      errorDiv.id = "error-" + id;
+      errorDiv.classList.add("error-message");
+      input.after(errorDiv);
+    }
+    errorDiv.textContent = "* " + message;
+    isValid = false;
   }
 
-  // if (!service) {
-  //   errorMsg.textContent = "Please select a service";
-  // }
+  if (!name) showError("name", "This field is required.");
+  if (!phone) showError("phone", "This field is required.");
+  else if (!/^[0-9]+$/.test(phone))
+    showError("phone", "Phone should contain numbers only.");
 
-  const selectedData = new Date(date);
-  const today = new Date();
-  selectedData.setHours(0, 0, 0, 0);
-  today.setHours(0, 0, 0, 0);
-  if (selectedData <= today) {
-    errorMsg.textContent = "Please select a date after today date";
-    return;
+  if (!stylist) showError("stylist", "Please select a stylist.");
+  if (!service) showError("service", "Please select a service.");
+
+  if (!date) showError("date", "Please select a date.");
+  else {
+    const selectedDate = new Date(date);
+    const today = new Date();
+    selectedDate.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+    if (selectedDate < today) {
+      showError(
+        "date",
+        "Please select a date that is today or later. Past dates are not allowed."
+      );
+    }
   }
 
-  // if (!stylist) {
-  //   errorMsg.textContent = "Please select a stylist";
-  // }
-  if (!name || !phone || !stylist || !date || !time || !service) {
-    errorMsg.textContent = "Please fill out all required fields.";
-    return;
+  if (!time) {
+    const timeBtns = document.querySelectorAll(".time-slot-btn");
+    if (timeBtns.length > 0) {
+      let errorDiv = document.getElementById("error-time");
+      if (!errorDiv) {
+        errorDiv = document.createElement("div");
+        errorDiv.id = "error-time";
+        errorDiv.textContent = "* Please select a time slot.";
+        errorDiv.style.marginBottom = "15px";
+        errorDiv.classList.add("error-message");
+        document.getElementById("time-slots").after(errorDiv);
+
+        isValid = false;
+      }
+    }
+  } else {
+    const errorTimeSlot = document.getElementById("error-time");
+    if (errorTimeSlot) errorTimeSlot.textContent = "";
   }
+
+  if (!isValid) return;
 
   document.getElementById("confirm-name").textContent = name;
+  console.log(document.getElementById("confirm-name"));
+  console.log(document.getElementById("confirm-name").textContent);
   document.getElementById("confirm-phone").textContent = phone;
   document.getElementById("confirm-service").textContent = service;
   document.getElementById("confirm-stylist").textContent = stylist;
   document.getElementById("confirm-date").textContent = date;
   document.getElementById("confirm-time").textContent = time;
 
-  const bookingData = {
-    name,
-    phone,
-    service,
-    date,
-    stylist,
-    time,
-  };
+  bookingData = { name, phone, service, date, stylist, time };
 
-  let oldBookings = JSON.parse(localStorage.getItem("bookings")) || [];
-
-  oldBookings.push(bookingData);
-
-  localStorage.setItem("bookings", JSON.stringify(oldBookings));
-
-  errorMsg.textContent = "";
-  bookBtn.addEventListener("click", () => {
+  document.getElementById("Book-btn").addEventListener("click", () => {
     confirmModal.style.display = "block";
   });
 });
 
 confirmYes.addEventListener("click", () => {
+  let oldBookings = JSON.parse(localStorage.getItem("bookings")) || [];
+  oldBookings.push(bookingData);
+  localStorage.setItem("bookings", JSON.stringify(oldBookings));
+
   document.location.href = "../thankyou.html";
-  errorMsg.textContent = "";
   confirmModal.style.display = "none";
   timeSlotsContainer.innerHTML =
     "<p class='time-placeholder'>Please select a stylist to view available time slots</p>";
@@ -164,7 +186,6 @@ confirmYes.addEventListener("click", () => {
 });
 
 confirmNo.addEventListener("click", () => {
-  errorMsg.textContent = "";
   confirmModal.style.display = "none";
 });
 
