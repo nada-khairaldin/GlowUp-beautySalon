@@ -1456,6 +1456,7 @@ form label {
   width: 45%;
   border-radius: 0.5rem;
   font-weight: 700;
+  margin-top: 2rem;
 }
 
 .error-input {
