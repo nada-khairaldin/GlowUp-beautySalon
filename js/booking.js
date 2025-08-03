@@ -13,7 +13,7 @@ const timeSlotsContainer = document.getElementById("time-slots");
 let bookingData;
 async function loadStylists() {
   try {
-    const response = await fetch("/data/stylists.json");
+    const response = await fetch("../data/stylists.json");
     stylistData = await response.json();
     stylistData.forEach((stylist) => {
       const option = document.createElement("option");
