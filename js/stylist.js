@@ -59,7 +59,7 @@ async function loadTeamCards() {
       card.setAttribute("data-aos-duration", "800");
       card.setAttribute("data-aos-delay", `${index * 100}`);
       card.innerHTML = `
-        <img src="${member.image}" alt="${member.name}" class="team-card-img"/>
+        <img src="${member.image}" alt="${member.name}" class="team-card-img" loading="lazy"/>
         <div class="card-content">
           <h3>${member.name}</h3>
           <p>${member.specialty}</p>
