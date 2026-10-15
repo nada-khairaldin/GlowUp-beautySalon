@@ -54,9 +54,9 @@ contactForm.addEventListener("submit", (e) => {
 
   if (!isValid) return;
 
-  document.getElementById("contact-btn").addEventListener("click", () => {
+  if (confirmModal) {
     confirmModal.style.display = "block";
-  });
+  }
 });
 
 function validateEmail(email) {
@@ -66,7 +66,7 @@ function validateEmail(email) {
 
 confirmYes.addEventListener("click", () => {
   confirmModal.style.display = "none";
-  document.location.href = "../thankyou.html";
+  document.location.href = "./thankyou.html";
   contactForm.reset();
 });
 

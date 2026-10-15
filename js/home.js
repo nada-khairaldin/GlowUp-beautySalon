@@ -1,4 +1,3 @@
-AOS.init();
 document.addEventListener("DOMContentLoaded", function () {
   const swiper = new Swiper(".gallery-swiper", {
     slidesPerView: 1,
@@ -64,7 +63,7 @@ function validateEmail(email) {
 
 confirmYes.addEventListener("click", () => {
   confirmModal.style.display = "none";
-  document.location.href = "../thankyou.html";
+  document.location.href = "./thankyou.html";
   contactForm.reset();
 });
 
@@ -91,6 +90,9 @@ function activateSectionOnScroll() {
 
 window.addEventListener("scroll", activateSectionOnScroll);
 
-document.getElementById("plus-icon").addEventListener("click", function () {
-  window.location.href = "../gallery.html";
-});
+const plusIcon = document.getElementById("plus-icon");
+if (plusIcon) {
+  plusIcon.addEventListener("click", function () {
+    window.location.href = "./gallery.html";
+  });
+}

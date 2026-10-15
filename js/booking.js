@@ -13,7 +13,7 @@ const timeSlotsContainer = document.getElementById("time-slots");
 let bookingData;
 async function loadStylists() {
   try {
-    const response = await fetch("../data/stylists.json");
+    const response = await fetch("./data/stylists.json");
     stylistData = await response.json();
     stylistData.forEach((stylist) => {
       const option = document.createElement("option");
@@ -165,9 +165,9 @@ bookingForm.addEventListener("submit", (e) => {
 
   bookingData = { name, phone, service, date, stylist, time };
 
-  document.getElementById("Book-btn").addEventListener("click", () => {
+  if (confirmModal) {
     confirmModal.style.display = "block";
-  });
+  }
 });
 
 confirmYes.addEventListener("click", () => {
@@ -175,7 +175,7 @@ confirmYes.addEventListener("click", () => {
   oldBookings.push(bookingData);
   localStorage.setItem("bookings", JSON.stringify(oldBookings));
 
-  document.location.href = "../thankyou.html";
+  document.location.href = "./thankyou.html";
   confirmModal.style.display = "none";
   timeSlotsContainer.innerHTML =
     "<p class='time-placeholder'>Please select a stylist to view available time slots</p>";

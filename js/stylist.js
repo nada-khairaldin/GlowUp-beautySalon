@@ -1,18 +1,19 @@
 const modal = document.getElementById("modal");
+const modalContent = document.getElementById("modal-content");
 
 function closeModal() {
-  modal.style.display = "none";
-  modalContent.classList.remove("active");
+  if (modal) modal.style.display = "none";
+  if (modalContent) modalContent.classList.remove("active");
 }
 
 function openModal(member) {
-  const modalContent = document.getElementById("modal-content");
+  if (!modalContent || !modal) return;
   modalContent.innerHTML = `
   <button class="close-btn" id="modal-close">&times;</button>
   <div class="modal-inner">
     <div class="left-col">
       <img src="${member.image}" alt="${member.name}" class="team-popup-img" />
-      <a href="/booking.html" class="book-stylist stylist-btn" id="book-btn">Book Now</a>
+      <a href="./booking.html" class="book-stylist stylist-btn" id="book-btn">Book Now</a>
     </div>
     <div class="right-col">
       <h2>${member.name}</h2>
@@ -29,24 +30,27 @@ function openModal(member) {
   modalContent.classList.add("active");
 
   const closeBtn = document.getElementById("modal-close");
-  closeBtn.addEventListener("click", closeModal);
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
   modal.addEventListener("click", (e) => {
     if (e.target === modal) closeModal();
   });
   const bookBtn = document.getElementById("book-btn");
-  bookBtn.addEventListener("click", () => {
-    localStorage.setItem("stylist id", member.id);
-    window.location.href = "../booking.html";
-  });
+  if (bookBtn) {
+    bookBtn.addEventListener("click", () => {
+      localStorage.setItem("stylist id", member.id);
+      window.location.href = "./booking.html";
+    });
+  }
 }
 
 async function loadTeamCards() {
   try {
-    const response = await fetch("../data/stylists.json");
+    const response = await fetch("./data/stylists.json");
     if (!response.ok) throw new Error("Failed to load team data");
     const team = await response.json();
 
     const container = document.getElementById("cards-container");
+    if (!container) return;
     team.forEach((member, index) => {
       const card = document.createElement("div");
       card.classList.add("team-card");
@@ -63,8 +67,10 @@ async function loadTeamCards() {
       `;
       card.addEventListener("click", () => openModal(member));
       container.appendChild(card);
-      AOS.refresh();
     });
+    if (typeof AOS !== "undefined") {
+      AOS.refresh();
+    }
   } catch (error) {
     console.error(error);
   }
