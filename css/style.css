@@ -42,30 +42,199 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 3rem;
+  padding: 0.5rem 3rem;
   font-size: 1.6rem;
   background-color: var(--primary-color);
   backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
   width: 100%;
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: 0 4px 20px rgba(173, 46, 61, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .logo {
   width: 7rem;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+}
+
+.logo:hover {
+  transform: scale(1.06);
+}
+
+.logo:active {
+  transform: scale(0.95);
+  transition-duration: 0.08s;
 }
 
 .nav-link-list {
   list-style: none;
   display: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link-list li {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link-list a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.8rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.55rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  border-radius: 25px;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+              background-color 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
+}
+
+/* Hover state: clearly visible, soft illuminated pill + subtle lift */
+.nav-link-list a:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* Smooth animated sliding bottom glow indicator */
+.nav-link-list a::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  width: 0;
+  height: 2.5px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  transform: translateX(-50%);
+  transition: width 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+}
+
+.nav-link-list a:hover::after {
+  width: 65%;
+}
+
+/* Active / Press feeling (حركة وشعور الضغط الملموس) */
+.nav-link-list a:active {
+  transform: translateY(2px) scale(0.93) !important;
+  background-color: rgba(255, 255, 255, 0.32) !important;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.28) !important;
+  transition-duration: 0.06s !important;
+}
+
+.nav-link-list a:active::after {
+  width: 45%;
+}
+
+/* Active page highlight */
+.nav-link-list a.current-page {
+  background-color: rgba(255, 255, 255, 0.18);
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.nav-link-list a.current-page::after {
+  width: 50%;
 }
 
 .hamburger-icon {
   font-size: 3rem;
   color: var(--text-light);
   cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
 }
+
+.hamburger-icon:hover {
+  transform: scale(1.1);
+}
+
+.hamburger-icon:active {
+  transform: scale(0.88);
+  opacity: 0.8;
+  transition-duration: 0.06s;
+}
+
+/* ===================================================
+   Universal Button Interactive & Press Feedback (حركة الضغط)
+   =================================================== */
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+[role="button"],
+.btn-show,
+.stylist-btn,
+.time-slot-btn,
+.modal-btn,
+.close-btn {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Universal tactile press animation on active */
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active,
+input[type="reset"]:active,
+[role="button"]:active {
+  transform: translateY(2px) scale(0.96) !important;
+  filter: brightness(0.92);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+  transition: transform 0.08s ease, filter 0.08s ease, box-shadow 0.08s ease !important;
+}
+
+/* Ripple micro-interaction effect container */
+.has-press-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-press-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 70%);
+  transform: scale(0);
+  animation: pressRipple 0.55s ease-out forwards;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes pressRipple {
+  0% {
+    transform: scale(0);
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
 
 a {
   text-decoration: none;
@@ -76,29 +245,93 @@ a {
   position: fixed;
   top: 0;
   right: -100%;
-  width: 50%;
-  padding: 2rem;
+  width: min(85%, 320px);
+  padding: 2.5rem 2rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: rgba(173, 46, 61, 0.288);
-  backdrop-filter: blur(50px);
-  transition: right 0.3s ease-in-out;
+  background: rgba(173, 46, 61, 0.94);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
   z-index: 1000;
+  box-shadow: -8px 0 35px rgba(0, 0, 0, 0.3);
 }
 
 .sidebar-links-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 5rem;
-  font-size: 1.9rem;
+  gap: 1.6rem;
+  font-size: 1.8rem;
+  margin-top: 3.5rem;
+  padding: 0;
+}
+
+.sidebar-links-list li {
+  width: 100%;
+}
+
+.sidebar-links-list a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1.2rem 2rem;
+  color: var(--text-light);
+  font-weight: 500;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
+              background-color 0.22s ease,
+              border-color 0.22s ease,
+              box-shadow 0.22s ease;
+  overflow: hidden;
+}
+
+/* Sidebar hover: soft illumination and inward slide */
+.sidebar-links-list a:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateX(-6px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Sidebar active: tactile press sensation */
+.sidebar-links-list a:active {
+  transform: translateX(-2px) scale(0.95) !important;
+  background: rgba(255, 255, 255, 0.32) !important;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.22) !important;
+  transition-duration: 0.06s !important;
+}
+
+.sidebar-links-list a.current-page {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
 }
 
 .close-sidebar {
   font-size: 2rem;
   align-self: flex-end;
   color: var(--text-light);
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.close-sidebar:hover {
+  transform: scale(1.15);
+}
+
+.close-sidebar:active {
+  transform: scale(0.88);
+  opacity: 0.8;
+  transition-duration: 0.06s;
 }
 
 .btn-show {
@@ -111,13 +344,22 @@ a {
   border-radius: 30px;
   text-decoration: none;
   position: relative;
-  transition: all 0.3s ease;
+  transition: transform 0.15s ease, background-color 0.25s ease, box-shadow 0.25s ease, filter 0.15s ease;
   box-shadow: 0 8px 20px rgba(173, 46, 61, 0.25);
+  cursor: pointer;
 }
 
 .btn-show:hover {
   background-color: var(--primary-dark);
   transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(173, 46, 61, 0.35);
+}
+
+.btn-show:active {
+  transform: translateY(2px) scale(0.96) !important;
+  box-shadow: 0 3px 8px rgba(173, 46, 61, 0.25) !important;
+  filter: brightness(0.92);
+  transition-duration: 0.08s !important;
 }
 
 .btn-show .arrow {
@@ -167,6 +409,20 @@ a {
   background: linear-gradient(135deg, #ad2e3d, #b97a95);
   padding: 0.5rem 1rem;
   font-size: 1rem;
+  cursor: pointer;
+}
+
+.booking-btn:hover {
+  animation-play-state: paused;
+  transform: translateY(-2px) scale(1.02);
+}
+
+.booking-btn:active {
+  animation-play-state: paused !important;
+  transform: translateY(2px) scale(0.95) !important;
+  box-shadow: 0 2px 6px rgba(173, 46, 61, 0.35) !important;
+  filter: brightness(0.9) !important;
+  transition-duration: 0.08s !important;
 }
 
 @keyframes pulse {
@@ -175,8 +431,8 @@ a {
     box-shadow: 0 0 0 rgba(173, 46, 61, 0.7);
   }
   50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(173, 46, 61, 0.3);
+    transform: scale(1.035);
+    box-shadow: 0 0 16px rgba(173, 46, 61, 0.3);
   }
   100% {
     transform: scale(1);
@@ -242,7 +498,7 @@ a {
 
 .salon-img-box2 {
   transform: rotate(8deg) translate(150px);
-  transition: transform linear 0.7s;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .salon-img-box2:hover {
@@ -277,7 +533,7 @@ a {
   width: 100%;
   height: 100%;
   position: relative;
-  transition: transform 0.8s ease;
+  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
   transform-style: preserve-3d;
 }
 
@@ -459,9 +715,20 @@ a {
   font-size: 3rem;
 }
 
+.more-circle {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
 .more-circle:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.more-circle:active {
+  transform: scale(0.92) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+  transition-duration: 0.08s !important;
 }
 
 .more-text {
@@ -479,11 +746,23 @@ a {
 .swiper-button-prev,
 .swiper-button-next {
   color: var(--primary-color) !important;
+  transition: transform 0.15s ease, color 0.2s ease !important;
+  cursor: pointer;
 }
 
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
-  color: var(--primary-dark);
+  color: var(--primary-dark) !important;
+}
+
+.swiper-button-prev:active {
+  transform: scale(0.82) translateX(-3px) !important;
+  transition-duration: 0.08s !important;
+}
+
+.swiper-button-next:active {
+  transform: scale(0.82) translateX(3px) !important;
+  transition-duration: 0.08s !important;
 }
 
 .contact-section {
@@ -553,7 +832,7 @@ textarea {
   color: var(--bg-page);
   border-radius: 20px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.15s ease, background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, filter 0.15s ease;
   align-self: flex-end;
   box-sizing: border-box;
 }
@@ -563,6 +842,14 @@ textarea {
   background-color: var(--bg-page);
   color: var(--primary-color);
   box-shadow: 0 4px 12px rgba(173, 46, 61, 0.2);
+  transform: translateY(-2px);
+}
+
+.contact-btn:active {
+  transform: translateY(2px) scale(0.96) !important;
+  box-shadow: 0 1px 4px rgba(173, 46, 61, 0.25) !important;
+  filter: brightness(0.92);
+  transition-duration: 0.08s !important;
 }
 
 .behind-popups-modal {
@@ -573,22 +860,37 @@ textarea {
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.63);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   z-index: 100;
+  transition: opacity 0.3s ease;
 }
 
 .modal-content {
   background: white;
   max-width: 40rem;
   width: 90%;
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 1.6rem;
-  border-radius: 1rem;
+  border-radius: 1.6rem;
   text-align: center;
-  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  animation: modalPopIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPopIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -46%) scale(0.93);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 .modal-btn {
@@ -598,6 +900,21 @@ textarea {
   border-radius: 1rem;
   cursor: pointer;
   color: #ffff;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.15s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.modal-btn:active {
+  transform: translateY(2px) scale(0.94) !important;
+  filter: brightness(0.88) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25) !important;
+  transition-duration: 0.08s !important;
 }
 
 #confirm-yes {
@@ -777,13 +1094,25 @@ textarea {
   cursor: pointer;
   font-weight: 500;
   font-size: 1.7rem;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease, filter 0.15s ease;
 }
+
 .view-gallery-btn {
   background-color: #e6dada;
+  color: var(--text-main);
 }
 
 .view-gallery-btn:hover {
   background-color: #e7d0d0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.view-gallery-btn:active {
+  transform: translateY(2px) scale(0.95) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
+  filter: brightness(0.92);
+  transition-duration: 0.08s !important;
 }
 
 .book-now-btn {
@@ -793,6 +1122,15 @@ textarea {
 
 .book-now-btn:hover {
   background-color: #8a2430;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(173, 46, 61, 0.3);
+}
+
+.book-now-btn:active {
+  transform: translateY(2px) scale(0.95) !important;
+  box-shadow: 0 1px 4px rgba(173, 46, 61, 0.3) !important;
+  filter: brightness(0.92);
+  transition-duration: 0.08s !important;
 }
 
 .offer-card {
@@ -890,11 +1228,35 @@ textarea {
   padding: 1.5rem;
   border-radius: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
 }
 
 .team-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.team-card:active {
+  transform: translateY(-3px) scale(0.98);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  transition-duration: 0.08s;
+}
+
+/* Super soft, barely-there entrance for team cards when opening page */
+.team-card[data-aos] {
+  transition-property: opacity, transform !important;
+  transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.team-card[data-aos="fade"] {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.team-card[data-aos="fade"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .team-card-img {
@@ -1014,12 +1376,23 @@ textarea {
   padding: 0.7rem 1.2rem;
   border-radius: 12px;
   font-weight: bold;
-  transition: 0.3s;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.25s ease, color 0.25s ease, box-shadow 0.2s ease, filter 0.15s ease;
 }
 
 .stylist-btn:hover {
   background-color: #b94f6f;
   color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(185, 79, 111, 0.3);
+}
+
+.stylist-btn:active {
+  transform: translateY(2px) scale(0.95) !important;
+  box-shadow: 0 1px 4px rgba(185, 79, 111, 0.3) !important;
+  filter: brightness(0.92);
+  transition-duration: 0.08s !important;
 }
 
 .close-btn {
@@ -1032,12 +1405,19 @@ textarea {
   border: none;
   cursor: pointer;
   z-index: 10;
+  transition: transform 0.15s ease, color 0.2s ease;
 }
+
 .close-btn:hover {
   color: #e91e63;
   transform: scale(1.2);
-  transition: all 0.3s ease;
   cursor: pointer;
+}
+
+.close-btn:active {
+  transform: scale(0.85) !important;
+  color: #ad2e3d;
+  transition-duration: 0.08s !important;
 }
 
 .gallery-main {
@@ -1070,6 +1450,7 @@ textarea {
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
+  cursor: pointer;
 }
 
 .img-wrapper:hover .gallery-img {
@@ -1198,14 +1579,18 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
-  transition: transform 0.3s ease;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   width: 250px;
 }
 
 .step-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1);
 }
 
 .step-number {
@@ -1274,7 +1659,8 @@ form label {
   outline: none;
 }
 
-.form-container button[type="submit"] {
+.form-container button[type="submit"],
+.Book-btn {
   width: 100%;
   padding: 15px 12px;
   background-color: var(--primary-color);
@@ -1283,11 +1669,23 @@ form label {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  box-shadow: 0 4px 12px rgba(173, 46, 61, 0.2);
+  transition: transform 0.15s ease, background-color 0.25s ease, box-shadow 0.2s ease, filter 0.15s ease;
 }
 
-.form-container button[type="submit"]:hover {
+.form-container button[type="submit"]:hover,
+.Book-btn:hover {
   background-color: #6e1520;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(173, 46, 61, 0.3);
+}
+
+.form-container button[type="submit"]:active,
+.Book-btn:active {
+  transform: translateY(2px) scale(0.97) !important;
+  box-shadow: 0 2px 6px rgba(173, 46, 61, 0.25) !important;
+  filter: brightness(0.92);
+  transition-duration: 0.08s !important;
 }
 
 .local-saved-active {
@@ -1316,10 +1714,21 @@ form label {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 1.4rem;
+  transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.15s ease, filter 0.15s ease;
 }
 
 .time-slot-btn:hover {
   background-color: #e5b1b1;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.time-slot-btn:active {
+  transform: translateY(2px) scale(0.92) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+  filter: brightness(0.92);
+  transition-duration: 0.08s !important;
 }
 
 .time-slot-btn.selected {
@@ -1525,13 +1934,21 @@ form label {
   align-items: flex-end;
 }
 .footer-social a {
+  display: inline-block;
   margin-right: 1rem;
   color: var(--gray-soft);
   font-size: 2rem;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .footer-social a:hover {
   transform: scale(1.2);
+  color: var(--primary-light);
+}
+
+.footer-social a:active {
+  transform: scale(0.9) !important;
+  transition-duration: 0.08s !important;
 }
 
 .footer-bottom {
@@ -1612,7 +2029,7 @@ form label {
 
 .thank-you-text button {
   background-color: var(--primary-color);
-  border: none;
+  border: 1px solid transparent;
   color: var(--text-light);
   padding: 1.4rem 2rem;
   font-size: 1.5rem;
@@ -1621,19 +2038,28 @@ form label {
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
-  transition: all 0.3s ease;
+  transition: transform 0.15s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.2s ease, filter 0.15s ease;
 }
 
 .thank-you-text button:hover {
   background-color: var(--primary-light);
   color: var(--primary-color);
-  border: 1px solid var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(173, 46, 61, 0.2);
+}
+
+.thank-you-text button:active {
+  transform: translateY(2px) scale(0.96) !important;
+  box-shadow: 0 2px 6px rgba(173, 46, 61, 0.25) !important;
+  filter: brightness(0.92);
+  transition-duration: 0.08s !important;
 }
 
 @media (min-width: 768px) {
   .nav-link-list {
     display: flex;
-    gap: 4rem;
+    gap: 1.5rem;
   }
   .hamburger-icon {
     display: none;
@@ -1721,6 +2147,10 @@ form label {
 @media (min-width: 1024px) {
   .header {
     padding: 0 7rem;
+  }
+
+  .nav-link-list {
+    gap: 2.5rem;
   }
 
   .about-us {

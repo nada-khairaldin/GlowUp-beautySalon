@@ -55,9 +55,9 @@ async function loadTeamCards() {
       const card = document.createElement("div");
       card.classList.add("team-card");
 
-      card.setAttribute("data-aos", "fade-up");
-      card.setAttribute("data-aos-duration", "800");
-      card.setAttribute("data-aos-delay", `${index * 100}`);
+      card.setAttribute("data-aos", "fade");
+      card.setAttribute("data-aos-duration", "600");
+      card.setAttribute("data-aos-delay", `${index * 60}`);
       card.innerHTML = `
         <img src="${member.image}" alt="${member.name}" class="team-card-img" loading="lazy"/>
         <div class="card-content">
