@@ -548,19 +548,21 @@ textarea {
 .contact-btn {
   background-color: var(--primary-color);
   width: 120px;
-  border: none;
-  padding: 1.3rem;
+  border: 1px solid transparent;
+  padding: 1.2rem;
   color: var(--bg-page);
   border-radius: 20px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
   align-self: flex-end;
+  box-sizing: border-box;
 }
 
 .contact-btn:hover {
-  border: 1px solid var(--primary-color);
+  border-color: var(--primary-color);
   background-color: var(--bg-page);
   color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(173, 46, 61, 0.2);
 }
 
 .behind-popups-modal {
@@ -1681,9 +1683,6 @@ form label {
     gap: 2.5rem;
   }
 
-  .gallery-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
   .booking-main-heading {
     font-size: 2rem;
     padding: 5rem 8rem;
@@ -1751,5 +1750,193 @@ form label {
   }
   .contact-pg-form button {
     width: 30%;
+  }
+}
+
+/* ===================================================
+   Mobile & Tablet Enhanced UX / UI Horizontal Scrolling
+   =================================================== */
+
+/* Sleek custom scrollbar for horizontal reels */
+.gallery-grid::-webkit-scrollbar,
+.steps-container::-webkit-scrollbar,
+.cards-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.gallery-grid::-webkit-scrollbar-track,
+.steps-container::-webkit-scrollbar-track,
+.cards-container::-webkit-scrollbar-track {
+  background: var(--primary-light);
+  border-radius: 10px;
+}
+
+.gallery-grid::-webkit-scrollbar-thumb,
+.steps-container::-webkit-scrollbar-thumb,
+.cards-container::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+/* Subtle transitions for location and map sections */
+.info-container,
+.map-section {
+  transition: opacity 0.4s ease;
+}
+
+/* Mobile Screens (max-width: 767px) */
+@media (max-width: 767px) {
+  /* 1. Gallery: 2-row horizontal swipe reel */
+  .gallery-grid {
+    display: grid !important;
+    grid-template-rows: repeat(2, 180px);
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(160px, 190px);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding: 1rem 1.5rem 2rem 1.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--primary-light);
+  }
+
+  .gallery-grid .img-wrapper {
+    height: 100%;
+    border-radius: 12px;
+    scroll-snap-align: start;
+  }
+
+  /* 2. Steps of booking: horizontal card slider */
+  .steps-container {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1.5rem;
+    padding: 1rem 1.5rem 2rem 1.5rem;
+    justify-content: flex-start !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--primary-light);
+  }
+
+  .step-card {
+    flex: 0 0 240px !important;
+    width: 240px !important;
+    scroll-snap-align: start;
+    border-radius: 16px;
+  }
+
+  /* 3. Stylists: horizontal card slider */
+  .cards-container {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1.5rem;
+    padding: 1rem 1.5rem 2.5rem 1.5rem;
+    justify-content: flex-start !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--primary-light);
+  }
+
+  .team-card {
+    flex: 0 0 250px !important;
+    width: 250px !important;
+    scroll-snap-align: center;
+    text-align: center;
+    padding: 1.8rem 1.2rem;
+    border-radius: 16px;
+  }
+
+  .team-card-img {
+    width: 170px !important;
+    height: 170px !important;
+    margin: 0 auto 1.2rem auto;
+  }
+}
+
+/* Tablet Screens (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* 1. Gallery: 2-row horizontal swipe reel for tablets */
+  .gallery-grid {
+    display: grid !important;
+    grid-template-rows: repeat(2, 230px);
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(220px, 250px);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px;
+    padding: 1.5rem 2rem 2.5rem 2rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--primary-light);
+  }
+
+  .gallery-grid .img-wrapper {
+    height: 100%;
+    border-radius: 14px;
+    scroll-snap-align: start;
+  }
+
+  /* 2. Steps of booking: 2-row horizontal layout */
+  .steps-container {
+    display: grid !important;
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(260px, 280px);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 2rem;
+    padding: 1.5rem 2rem 2.5rem 2rem;
+    justify-content: flex-start !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--primary-light);
+  }
+
+  .step-card {
+    width: 100% !important;
+    scroll-snap-align: start;
+    border-radius: 16px;
+  }
+
+  /* 3. Stylists: 2-row horizontal scroll (2x3 grid) */
+  .cards-container {
+    display: grid !important;
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(270px, 290px);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 2rem;
+    padding: 1.5rem 2rem 2.5rem 2rem;
+    justify-content: flex-start !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--primary-light);
+  }
+
+  .team-card {
+    width: 100% !important;
+    scroll-snap-align: start;
+    text-align: center;
+    padding: 1.8rem 1.2rem;
+    border-radius: 16px;
+  }
+
+  .team-card-img {
+    width: 190px !important;
+    height: 190px !important;
+    margin: 0 auto 1.2rem auto;
+  }
+}
+
+/* Desktop Screens (min-width: 1025px) */
+@media (min-width: 1025px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

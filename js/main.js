@@ -1,7 +1,8 @@
 if (typeof AOS !== "undefined") {
   AOS.init({
     once: true,
-    offset: 50,
+    offset: 120,
+    delay: 0,
   });
 }
 
