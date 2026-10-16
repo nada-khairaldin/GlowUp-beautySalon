@@ -1,3 +1,22 @@
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwRE8geyTMuJUJXwi7M1ESgZZT-Uaws43balKgOHNtqKBMk1T3a1DW5-R0l_7h-mWB72A/exec";
+const FALLBACK_URL = "./data/stylists.json";
+
+async function loadStylists() {
+  try {
+    const res = await fetch(APPS_SCRIPT_URL);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (!Array.isArray(data) || data.length === 0) {
+      throw new Error("Sheet returned no stylists");
+    }
+    return data;
+  } catch (err) {
+    console.warn("Sheet failed, using local JSON:", err);
+    const res = await fetch(FALLBACK_URL);
+    return res.json();
+  }
+}
+
 const modal = document.getElementById("modal");
 const modalContent = document.getElementById("modal-content");
 
@@ -8,6 +27,12 @@ function closeModal() {
 
 function openModal(member) {
   if (!modalContent || !modal) return;
+  const servicesList = Array.isArray(member.services)
+    ? member.services
+    : typeof member.services === "string"
+    ? member.services.split(",").map((s) => s.trim()).filter(Boolean)
+    : [];
+
   modalContent.innerHTML = `
   <button class="close-btn" id="modal-close">&times;</button>
   <div class="modal-inner">
@@ -21,7 +46,7 @@ function openModal(member) {
       <p>${member.bio}</p>
       <h4>Services:</h4>
       <ul class="stylist-services">
-        ${member.services.map((service) => `<li>• ${service}</li>`).join("")}
+        ${servicesList.map((service) => `<li>• ${service}</li>`).join("")}
       </ul>
     </div>
   </div>
@@ -44,13 +69,31 @@ function openModal(member) {
 }
 
 async function loadTeamCards() {
-  try {
-    const response = await fetch("./data/stylists.json");
-    if (!response.ok) throw new Error("Failed to load team data");
-    const team = await response.json();
+  const container = document.getElementById("cards-container");
+  if (!container) return;
 
-    const container = document.getElementById("cards-container");
-    if (!container) return;
+  // Show loading indicator before fetching data
+  container.innerHTML = `
+    <div class="stylist-loader" role="status" aria-live="polite">
+      <div class="stylist-spinner"></div>
+      <p class="stylist-loading-text">Loading stylists...</p>
+    </div>
+  `;
+
+  try {
+    const team = await loadStylists();
+
+    container.innerHTML = "";
+
+    if (!Array.isArray(team) || team.length === 0) {
+      container.innerHTML = `
+        <div class="stylist-error">
+          <p>No stylists found at the moment.</p>
+        </div>
+      `;
+      return;
+    }
+
     team.forEach((member, index) => {
       const card = document.createElement("div");
       card.classList.add("team-card");
@@ -68,11 +111,22 @@ async function loadTeamCards() {
       card.addEventListener("click", () => openModal(member));
       container.appendChild(card);
     });
+
     if (typeof AOS !== "undefined") {
       AOS.refresh();
     }
   } catch (error) {
-    console.error(error);
+    console.error("Error loading team cards:", error);
+    container.innerHTML = `
+      <div class="stylist-error">
+        <p>Failed to load stylists. Please try again.</p>
+        <button class="stylist-retry-btn" id="retry-load-btn">Retry</button>
+      </div>
+    `;
+    const retryBtn = document.getElementById("retry-load-btn");
+    if (retryBtn) {
+      retryBtn.addEventListener("click", loadTeamCards);
+    }
   }
 }
 

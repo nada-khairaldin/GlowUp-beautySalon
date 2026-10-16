@@ -13,23 +13,33 @@ const timeSlotsContainer = document.getElementById("time-slots");
 let bookingData;
 async function loadStylists() {
   try {
+    if (stylistSelect) {
+      stylistSelect.innerHTML = `<option value="">Loading stylists...</option>`;
+    }
     const response = await fetch("./data/stylists.json");
     stylistData = await response.json();
-    stylistData.forEach((stylist) => {
-      const option = document.createElement("option");
-      option.value = stylist.id;
-      option.textContent = stylist.name;
-      stylistSelect.append(option);
-    });
 
-    const savedStylistID = localStorage.getItem("stylist id");
-    if (savedStylistID) {
-      stylistSelect.value = savedStylistID;
-      stylistSelect.classList.add("local-saved-active");
-      handleSelectingChange();
+    if (stylistSelect) {
+      stylistSelect.innerHTML = `<option value="">-- Choose a Stylist --</option>`;
+      stylistData.forEach((stylist) => {
+        const option = document.createElement("option");
+        option.value = stylist.id;
+        option.textContent = stylist.name;
+        stylistSelect.append(option);
+      });
+
+      const savedStylistID = localStorage.getItem("stylist id");
+      if (savedStylistID) {
+        stylistSelect.value = savedStylistID;
+        stylistSelect.classList.add("local-saved-active");
+        handleSelectingChange();
+      }
     }
   } catch (error) {
     console.log("Error in loading Stylists data : ", error);
+    if (stylistSelect) {
+      stylistSelect.innerHTML = `<option value="">Failed to load stylists</option>`;
+    }
   }
 }
 const savedService = localStorage.getItem("service category");
